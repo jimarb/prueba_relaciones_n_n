@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <% @todos.each do |todo| %>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+          <%= image_tag todo.photo, class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= todo.title %></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <%= link_to "Realizada", todo_todousers_path(todo), method: :post, class: "btn btn-success" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
