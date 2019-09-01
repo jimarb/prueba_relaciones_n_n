@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-12.times do |i|
+9.times do |i|
   Todo.create(
        title: Faker::Commerce.product_name,
        photo: "https://picsum.photos/id/#{i + 1}/300/200"

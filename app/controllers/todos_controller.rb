@@ -4,7 +4,9 @@ class TodosController < ApplicationController
   end
 
   def show
-    @todo = Todo.find(params[:todo_id])
+    @todo = Todo.find(params[:id])
+    @ranking5 = Todouser.limit(5).where(todo_id: @todo.id).order(created_at: :asc)
+    @users_todo_finish = Todouser.all.where(todo_id: @todo.id).order(created_at: :asc)
   end
 
 end
