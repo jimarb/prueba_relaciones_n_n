@@ -22,7 +22,7 @@
         <tbody>
           <% @ranking5.each do |rank| %>
             <tr>
-                <td><%= User.find_by(id: rank.user_id).photo %></td>
+                <td><%= image_tag("https://cdn0.iconfinder.com/data/icons/faces-3/24/148-512.png", class: "avatar-img") %></td>
                 <td><%= User.find_by(id: rank.user_id).name %></td>
             </tr>
           <% end %>
