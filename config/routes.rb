@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'todos/index'
-  resources :todos, only: :index do
-    resources :todousers, only: :create
+  resources :todos, only: [:index, :show] do
+    resources :todousers, only: [:create, :destroy]
   end
   root to: 'todos#index'
   devise_for :users

@@ -3,11 +3,21 @@
     <% @todos.each do |todo| %>
       <div class="col">
         <div class="card" style="width: 18rem;">
-          <%= image_tag todo.photo, class: "card-img-top" %>
+            <% if user_signed_in? && current_user.todousers.find_by(todo_id: todo.id) %>
+              <%= image_tag todo.photo, class: "card-img-top img-gray-filter" %>
+            <% else %>
+              <%= image_tag todo.photo, class: "card-img-top" %>
+            <% end %>
           <div class="card-body">
-            <h5 class="card-title"><%= todo.title %></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <%= link_to "Realizada", todo_todousers_path(todo), method: :post, class: "btn btn-success" %>
+            <h5 class="card-title"><%= link_to todo.title, todo_path(id: todo.id)%></h5>
+            <p class="card-text">Creación: <%= time_ago_in_words(todo.created_at) %></p>
+            <% if user_signed_in? %>
+              <% if current_user.todousers.find_by(todo_id: todo.id) %>
+                <%= link_to "Marcar como no listo", todo_todouser_path(todo, current_user), method: :delete, class: "btn btn-danger" %>
+              <% else %>
+                <%= link_to "Marcar como listo", todo_todousers_path(todo), method: :post, class: "btn btn-success" %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>

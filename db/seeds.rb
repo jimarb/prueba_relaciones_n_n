@@ -9,6 +9,6 @@
 12.times do |i|
   Todo.create(
        title: Faker::Commerce.product_name,
-       photo: "http://lorempixel.com/400/200/"
+       photo: "https://picsum.photos/id/#{i + 1}/300/200"
    )
 end

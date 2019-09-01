@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20190831015150) do
   create_table "todousers", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "todo_id"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["todo_id"], name: "index_todousers_on_todo_id"
